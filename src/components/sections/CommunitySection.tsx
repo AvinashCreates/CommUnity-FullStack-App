@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,6 +36,7 @@ const CommunitySection = () => {
   const [newPostTags, setNewPostTags] = useState("");
   const { user } = useAuth();
   const { isAdmin } = useUserRole();
+  const navigate = useNavigate();
   const { 
     posts, 
     events, 
@@ -288,7 +290,7 @@ const CommunitySection = () => {
           {!user ? (
             <Card className="p-8 text-center">
               <p className="text-muted-foreground mb-4">Please sign in to create posts</p>
-              <Button onClick={() => window.location.href = '/auth'}>
+              <Button onClick={() => navigate('/auth')}>
                 Sign In
               </Button>
             </Card>
