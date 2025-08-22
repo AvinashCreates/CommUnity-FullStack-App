@@ -27,28 +27,28 @@ const AdminDashboard = () => {
       value: '48',
       description: 'Community reports submitted',
       icon: FileText,
-      color: 'bg-blue-500'
+      color: 'bg-primary'
     },
     {
       title: 'Active Vendors',
       value: '23',
       description: 'Registered service providers',
       icon: Store,
-      color: 'bg-green-500'
+      color: 'bg-success'
     },
     {
       title: 'Announcements',
       value: '12',
       description: 'Published announcements',
       icon: Megaphone,
-      color: 'bg-purple-500'
+      color: 'bg-accent'
     },
     {
       title: 'Community Members',
       value: '156',
       description: 'Registered users',
       icon: Users,
-      color: 'bg-orange-500'
+      color: 'bg-secondary'
     }
   ];
 
@@ -79,14 +79,14 @@ const AdminDashboard = () => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'pending':
-        return <Clock className="h-4 w-4 text-yellow-500" />;
+        return <Clock className="h-4 w-4 text-warning" />;
       case 'approved':
       case 'published':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-success" />;
       case 'rejected':
-        return <XCircle className="h-4 w-4 text-red-500" />;
+        return <XCircle className="h-4 w-4 text-destructive" />;
       default:
-        return <Clock className="h-4 w-4 text-gray-500" />;
+        return <Clock className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
@@ -125,14 +125,14 @@ const AdminDashboard = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <div className="overflow-x-auto">
-            <TabsList className="grid w-full min-w-fit grid-cols-4">
-              <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
-              <TabsTrigger value="reports" className="text-xs sm:text-sm">Reports</TabsTrigger>
-              <TabsTrigger value="vendors" className="text-xs sm:text-sm">Vendors</TabsTrigger>
-              <TabsTrigger value="announcements" className="text-xs sm:text-sm">Announcements</TabsTrigger>
-            </TabsList>
-          </div>
+            <div className="overflow-x-auto">
+              <TabsList className="grid w-full min-w-fit grid-cols-2 sm:grid-cols-4">
+                <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
+                <TabsTrigger value="reports" className="text-xs sm:text-sm">Reports</TabsTrigger>
+                <TabsTrigger value="vendors" className="text-xs sm:text-sm">Vendors</TabsTrigger>
+                <TabsTrigger value="announcements" className="text-xs sm:text-sm">Announcements</TabsTrigger>
+              </TabsList>
+            </div>
 
           <TabsContent value="overview" className="space-y-6">
             {/* Stats Grid */}

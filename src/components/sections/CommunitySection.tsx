@@ -78,14 +78,14 @@ const CommunitySection = () => {
   };
 
   const getPostTypeBadge = (type: string) => {
-    const colors = {
-      text: "bg-primary",
-      image: "bg-success",
-      poll: "bg-warning",
-      event: "bg-secondary"
+    const variants = {
+      text: "default" as const,
+      image: "secondary" as const,
+      poll: "outline" as const,
+      event: "outline" as const
     };
     return (
-      <Badge variant="outline" className={`text-xs ${colors[type as keyof typeof colors] || colors.text} text-white`}>
+      <Badge variant={variants[type as keyof typeof variants] || "outline"} className="text-xs">
         {getPostTypeIcon(type)}
         <span className="ml-1 capitalize">{type}</span>
       </Badge>
