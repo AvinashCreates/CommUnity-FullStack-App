@@ -396,6 +396,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_default_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       delete_community_post: {
         Args: { post_id: string }
         Returns: boolean

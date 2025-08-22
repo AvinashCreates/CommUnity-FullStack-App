@@ -6,7 +6,6 @@ import ReportSection from "@/components/sections/ReportSection";
 import AnnouncementsSection from "@/components/sections/AnnouncementsSection";
 import VendorsSection from "@/components/sections/VendorsSection";
 import CommunitySection from "@/components/sections/CommunitySection";
-import AdminDashboard from "@/components/admin/AdminDashboard";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useAuth } from "@/hooks/useAuth";
 import { Loader2 } from "lucide-react";
@@ -30,8 +29,8 @@ const Index = () => {
     return <Navigate to="/auth" replace />;
   }
 
-  // Set initial tab based on user role
-  const initialTab = isAdmin ? "admin" : "reports";
+  // Set initial tab based on user role  
+  const [initialTab] = useState(isAdmin ? "admin" : "reports");
 
   const renderContent = () => {
     switch (activeTab) {
@@ -44,9 +43,9 @@ const Index = () => {
       case "community":
         return <CommunitySection />;
       case "admin":
-        return isAdmin ? <AdminDashboard /> : <ReportSection />;
+        return isAdmin ? <Navigate to="/admin" replace /> : <ReportSection />;
       default:
-        return isAdmin ? <AdminDashboard /> : <ReportSection />;
+        return <ReportSection />;
     }
   };
 

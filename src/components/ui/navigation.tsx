@@ -15,6 +15,7 @@ import {
 import { useUserRole } from "@/hooks/useUserRole";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface NavigationProps {
   activeTab: string;
@@ -25,6 +26,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
   const { user, signOut } = useAuth();
   const { isAdmin } = useUserRole();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     await signOut();
@@ -34,12 +36,15 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
     });
   };
 
+  const handleAdminClick = () => {
+    navigate('/admin');
+  };
+
   const navItems = [
     { id: "reports", label: "Reports", icon: FileText },
     { id: "announcements", label: "Announcements", icon: Megaphone },
     { id: "vendors", label: "Vendors", icon: Store },
     { id: "community", label: "Community", icon: Users },
-    ...(isAdmin ? [{ id: "admin", label: "Admin", icon: Settings }] : []),
   ];
 
   return (
@@ -70,6 +75,18 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                 </Button>
               );
             })}
+            
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleAdminClick}
+                className="relative ml-2"
+              >
+                <Settings className="w-4 h-4 mr-2" />
+                Admin Portal
+              </Button>
+            )}
             
             {user && (
               <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-border">
@@ -136,6 +153,17 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                         </Button>
                       );
                     })}
+                    
+                    {isAdmin && (
+                      <Button
+                        variant="outline"
+                        className="w-full justify-start"
+                        onClick={handleAdminClick}
+                      >
+                        <Settings className="w-4 h-4 mr-3" />
+                        Admin Portal
+                      </Button>
+                    )}
                   </div>
                 </div>
               </SheetContent>

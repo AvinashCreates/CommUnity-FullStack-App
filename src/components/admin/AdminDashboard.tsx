@@ -17,6 +17,7 @@ import {
 import AdminReportsManager from './AdminReportsManager';
 import AdminVendorsManager from './AdminVendorsManager';
 import AdminAnnouncementsManager from './AdminAnnouncementsManager';
+import AdminPostsManager from './AdminPostsManager';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -126,11 +127,12 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
             <div className="overflow-x-auto">
-              <TabsList className="grid w-full min-w-fit grid-cols-2 sm:grid-cols-4">
+              <TabsList className="grid w-full min-w-fit grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
                 <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
                 <TabsTrigger value="reports" className="text-xs sm:text-sm">Reports</TabsTrigger>
                 <TabsTrigger value="vendors" className="text-xs sm:text-sm">Vendors</TabsTrigger>
                 <TabsTrigger value="announcements" className="text-xs sm:text-sm">Announcements</TabsTrigger>
+                <TabsTrigger value="posts" className="text-xs sm:text-sm">Posts</TabsTrigger>
               </TabsList>
             </div>
 
@@ -197,6 +199,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="announcements">
             <AdminAnnouncementsManager />
+          </TabsContent>
+
+          <TabsContent value="posts">
+            <AdminPostsManager />
           </TabsContent>
         </Tabs>
       </div>
