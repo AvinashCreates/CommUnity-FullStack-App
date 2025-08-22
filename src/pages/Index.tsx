@@ -18,8 +18,11 @@ const Index = () => {
   // Show loading while checking authentication
   if (loading || roleLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-4">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+          <p className="text-muted-foreground">Loading platform...</p>
+        </div>
       </div>
     );
   }
@@ -50,21 +53,107 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
       
-      <main>
+      <main className="animate-fade-in-up">
         {renderContent()}
       </main>
       
-      <footer className="bg-muted/30 border-t border-border py-8 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-8 h-8 bg-trust-gradient rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">C</span>
+      {/* Professional Footer */}
+      <footer className="bg-card border-t border-border mt-16">
+        <div className="container-custom py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Brand Section */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-trust-gradient rounded-xl flex items-center justify-center shadow-elegant">
+                  <span className="text-white font-bold text-lg">C</span>
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-lg">CommUnity</h3>
+                  <p className="text-xs text-muted-foreground">Professional Platform</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Enterprise-grade community management platform empowering civic engagement and local commerce.
+              </p>
             </div>
-            <span className="text-lg font-semibold">CommUnity</span>
+
+            {/* Platform Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Platform</h4>
+              <div className="space-y-2">
+                <button onClick={() => setActiveTab("reports")} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Report Issues
+                </button>
+                <button onClick={() => setActiveTab("announcements")} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Announcements
+                </button>
+                <button onClick={() => setActiveTab("vendors")} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Local Services
+                </button>
+                <button onClick={() => setActiveTab("community")} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Community Hub
+                </button>
+              </div>
+            </div>
+
+            {/* Support */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Support</h4>
+              <div className="space-y-2">
+                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Help Center
+                </a>
+                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Contact Support
+                </a>
+                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  System Status
+                </a>
+                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Documentation
+                </a>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Connect</h4>
+              <div className="space-y-2">
+                <p className="text-sm text-muted-foreground">
+                  Professional community management solutions for modern municipalities.
+                </p>
+                <div className="flex space-x-2 pt-2">
+                  <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors cursor-pointer">
+                    <span className="text-xs font-medium">L</span>
+                  </div>
+                  <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors cursor-pointer">
+                    <span className="text-xs font-medium">T</span>
+                  </div>
+                  <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/10 transition-colors cursor-pointer">
+                    <span className="text-xs font-medium">G</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Empowering communities through civic engagement and local commerce.
-          </p>
+
+          {/* Bottom Section */}
+          <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-muted-foreground">
+              © 2024 CommUnity Platform. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Accessibility
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
