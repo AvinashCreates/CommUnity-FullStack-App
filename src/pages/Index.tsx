@@ -29,9 +29,6 @@ const Index = () => {
     return <Navigate to="/auth" replace />;
   }
 
-  // Set initial tab based on user role  
-  const [initialTab] = useState(isAdmin ? "admin" : "reports");
-
   const renderContent = () => {
     switch (activeTab) {
       case "reports":
